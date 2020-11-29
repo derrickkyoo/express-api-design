@@ -2,6 +2,7 @@ import { json, urlencoded } from 'body-parser'
 import cors from 'cors'
 import express from 'express'
 import morgan from 'morgan'
+import itemsRouter from './resources/items/items.router'
 
 export const app = express()
 
@@ -28,6 +29,9 @@ app.post('/', (req, res) => {
   console.log(req.body)
   res.send({ message: 'ok' })
 })
+
+// Registered subroutes
+app.use('/api/items', itemsRouter)
 
 export const start = () => {
   app.listen(3000, () => {
