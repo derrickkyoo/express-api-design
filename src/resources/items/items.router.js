@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import controllers from './items.controllers'
 
 const router = Router()
 const mockController = (req, res) => {
@@ -9,7 +10,7 @@ router.route('/').get(mockController).post(mockController)
 
 router
   .route('/:id')
-  .get(mockController)
+  .get(controllers.getOne)
   .put(mockController)
   .delete(mockController)
 
